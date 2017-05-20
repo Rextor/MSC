@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using MSC.Hash;
@@ -17,6 +17,7 @@ namespace MSC.Brute
         public bool ErrorAst { get; set; }
         public string Location { get; set; }
         public string RedirectedUrl { set; get; }
+        public byte[] Bytes { set; get; }
         public Image Image { set; get; }
     }
 
@@ -219,6 +220,11 @@ namespace MSC.Brute
 
             RequestManage Get = Rs.GetRequestByData(config, Manage, proxy);
             return Get;
+        }
+
+        public RequestManage GETBytes(Config config, Proxy proxy = null, bool GetImage = false)
+        {
+            return Rs.GetBytesRequest(config, proxy, GetImage);
         }
 
         /// <summary>
