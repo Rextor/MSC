@@ -108,5 +108,9 @@ namespace MSC
             }
             else return MessageT;
         }
+        public override string ToString()
+        {
+            return time.ToLongTimeString() + " => " + MessageT;
+        }
     }
 }
