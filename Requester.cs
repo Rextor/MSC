@@ -40,6 +40,10 @@ namespace MSC.Brute
         public int Port { set; get; }
         public string Username { set; get; }
         public string Password { set; get; }
+        public override string ToString()
+        {
+            return string.Concat("{0}:{1}@{2};{3}", Ip, Port.ToString(), Username, Password);
+        }
     }
 
     public class Account
@@ -48,6 +52,10 @@ namespace MSC.Brute
         public string Password { set; get; }
         public string Capture { set; get; }
         public bool Hit { set; get; }
+        public override string ToString()
+        {
+            return string.Concat("{0}:{1}", Username, Password);
+        }
     }
 
     public class Requester
