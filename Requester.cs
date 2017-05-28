@@ -21,7 +21,7 @@ namespace MSC.Brute
         public Image Image { set; get; }
         public override string ToString()
         {
-            return string.Concat("Headers: {0}\nStatusCode: {1}\nCookies: {2}\nErrorAst: {3}\nLocation: {4}\nRedirectedUrl: {5}", Headers.ToString(), StatusCode.ToString(), CookiesString, ErrorAst.ToString(), Location, RedirectedUrl);
+            return string.Format("Headers: {0}\nStatusCode: {1}\nCookies: {2}\nErrorAst: {3}\nLocation: {4}\nRedirectedUrl: {5}", Headers.ToString(), StatusCode.ToString(), CookiesString, ErrorAst.ToString(), Location, RedirectedUrl);
         }
     }
 
@@ -42,7 +42,7 @@ namespace MSC.Brute
         public string Password { set; get; }
         public override string ToString()
         {
-            return string.Concat("{0}:{1}@{2};{3}", Ip, Port.ToString(), Username, Password);
+            return string.Format("{0}:{1}@{2};{3}", Ip, Port.ToString(), Username, Password);
         }
     }
 
@@ -54,7 +54,7 @@ namespace MSC.Brute
         public bool Hit { set; get; }
         public override string ToString()
         {
-            return string.Concat("{0}:{1}", Username, Password);
+            return string.Format("{0}:{1}", Username, Password);
         }
     }
 
