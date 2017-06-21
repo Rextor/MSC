@@ -45,6 +45,10 @@ namespace MSC.Brute
 
         private string SetProxy(Proxy proxy, HttpWebRequest httpWebRequest, out HttpWebRequest res)
         {
+            if (ProxyService.UseInAllRequest)
+                proxy = ProxyService.proxy;
+            if (proxy == null)
+                proxy = ProxyService.proxy;
             res = httpWebRequest;
             if (proxy.Ip == null)
                 return "Proxy ip is null";
@@ -64,6 +68,10 @@ namespace MSC.Brute
         }
         private string SetProxy(Proxy proxy, WebClient web, out WebClient res)
         {
+            if (ProxyService.UseInAllRequest)
+                proxy = ProxyService.proxy;
+            if (proxy == null)
+                proxy = ProxyService.proxy;
             res = web;
             if (proxy.Ip == null)
                 return "Proxy ip is null";
@@ -88,7 +96,7 @@ namespace MSC.Brute
             WebClient wc = new WebClient();
             RequestManage Rm = new RequestManage();
 
-            if (proxy != null)
+            if (ProxyService.proxy != null | proxy != null)
             {
                 string setProxy = SetProxy(proxy, wc, out wc);
                 if (setProxy != "OK")
@@ -155,7 +163,7 @@ namespace MSC.Brute
                 catch { }
 
                 //Set Proxy
-                if (Proxy != null)
+                if (ProxyService.proxy != null | Proxy != null)
                 {
                     string setProxy = SetProxy(Proxy, httpWebRequest, out httpWebRequest);
                     if (setProxy != "OK")
@@ -232,7 +240,7 @@ namespace MSC.Brute
                 CookieContainer container = new CookieContainer();
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(config.LoginURL);
 
-                if (Proxy != null)
+                if (ProxyService.proxy != null | Proxy != null)
                 {
                     string setProxy = SetProxy(Proxy, httpWebRequest, out httpWebRequest);
                     if (setProxy != "OK")
