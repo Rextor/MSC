@@ -48,7 +48,8 @@ namespace MSC.Brute
             if (ProxyService.UseInAllRequest)
                 proxy = ProxyService.proxy;
             if (proxy == null)
-                proxy = ProxyService.proxy;
+                if (ProxyService.proxy != null)
+                    proxy = ProxyService.proxy;
             res = httpWebRequest;
             if (proxy.Ip == null)
                 return "Proxy ip is null";
@@ -71,6 +72,7 @@ namespace MSC.Brute
             if (ProxyService.UseInAllRequest)
                 proxy = ProxyService.proxy;
             if (proxy == null)
+                if (ProxyService.proxy != null)
                 proxy = ProxyService.proxy;
             res = web;
             if (proxy.Ip == null)
