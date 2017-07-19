@@ -32,7 +32,7 @@ namespace MSC
 
             config.Method = Method.POST;
             string pst = "'https://api.telegram.org/bot<TOKEN>/sendMessage?chat_id=<ID>&text=<TEXT>";
-            config.DataSet = "<USER>*<TOKEN>";
+            config.DataSet = "<ID>*<TOKEN>";
             pst = Rer.ReplaceAccount(ac, pst, config);
             config.LoginURL = pst.Replace("<TEXT>", text);
             config.AllowAutoRedirect = true;
