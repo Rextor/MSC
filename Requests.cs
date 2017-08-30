@@ -155,6 +155,8 @@ namespace MSC.Brute
                 CookieContainer container = new CookieContainer();
 
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(config.LoginURL);
+		    if (config.DecompressionGZip)
+                    httpWebRequest.AutomaticDecompression = DecompressionMethods.GZip;
                 try
                 {
                     if (mange.Cookies.Count != 0)
@@ -241,7 +243,8 @@ namespace MSC.Brute
                 //SetConfig
                 CookieContainer container = new CookieContainer();
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(config.LoginURL);
-
+                  if (config.DecompressionGZip)
+                    httpWebRequest.AutomaticDecompression = DecompressionMethods.GZip;
                 if (ProxyService.proxy.Ip != null | Proxy != null)
                 {
                     string setProxy = SetProxy(Proxy, httpWebRequest, out httpWebRequest);
