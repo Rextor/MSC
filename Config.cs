@@ -96,7 +96,11 @@ namespace MSC
             set;
             get;
         }
-
+        public bool DecompressionGZip
+        {
+            set;
+            get;
+        }
     }
     public enum Method
     {
