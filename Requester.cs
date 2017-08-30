@@ -40,7 +40,7 @@ namespace MSC.Brute
         public int Port { set; get; }
         public string Username { set; get; }
         public string Password { set; get; }
-	public static Proxy Pars(string proxy)
+	public static Proxy Parse(string proxy)
         {
             try { 
             Proxy newproxy = new Proxy();
