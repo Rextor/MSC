@@ -40,6 +40,19 @@ namespace MSC.Brute
         public int Port { set; get; }
         public string Username { set; get; }
         public string Password { set; get; }
+	public static Proxy Pars(string proxy)
+        {
+            try { 
+            Proxy newproxy = new Proxy();
+            newproxy.Ip = proxy.Split(':')[0];
+            newproxy.Port = int.Parse(proxy.Split(':')[1]);
+            return newproxy;
+            }
+            catch
+            {
+                throw new Exception("Can not pars string.");
+            }
+        }
         public override string ToString()
         {
             return string.Format("{0}:{1}@{2};{3}", Ip, Port.ToString(), Username, Password);
