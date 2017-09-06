@@ -3,7 +3,7 @@ using MSC.Brute;
 
 namespace MSC
 {
-    class TelegramService
+    public class TelegramService
     {
         private string Token;
         private string ID;
