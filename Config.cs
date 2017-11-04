@@ -101,7 +101,7 @@ namespace MSC
             set;
             get;
         }
-        public int TimeOut = 10;
+        public int TimeOut = 0;
     }
     public enum Method
     {
