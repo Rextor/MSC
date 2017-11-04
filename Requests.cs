@@ -44,7 +44,7 @@ namespace MSC.Brute
             httpWebRequest.Method = config.Method.ToString();
 		
            if(confit.TimeOut != 0)
-            httpWebRequest.Timeout = config.Timeout;
+            httpWebRequest.Timeout = config.TimeOut;
 
             return httpWebRequest;
         }
