@@ -42,6 +42,9 @@ namespace MSC.Brute
                 httpWebRequest.AutomaticDecompression = DecompressionMethods.GZip;
 
             httpWebRequest.Method = config.Method.ToString();
+		
+           if(confit.TimeOut != 0)
+            httpWebRequest.Timeout = config.Timeout;
 
             return httpWebRequest;
         }
