@@ -324,7 +324,7 @@ namespace MSC.Brute
         /// <param name="Proxy">Send request by proxy service.</param>
         /// <param name="Capture">Capture array list for get capture account.</param>
         /// <param name="source">The source page for search values in Regex Capture.</param>
-        public Account CaptureAccount(string source, Capture[] Capture, Account Account, Config config, RequestManage manage = null, Proxy Proxy = null)
+         public Account CaptureAccount(string source, Capture[] Capture, Account Account, Config config, RequestManage manage = null, Proxy Proxy = null)
         {
             RequestManage manage2 = new RequestManage();
             string end = "";
@@ -336,23 +336,11 @@ namespace MSC.Brute
                 config.LoginURL = cap.Redirect;
                 if (cap.Redirect != null)
                 {
-                    if (cap.UseCookies)
+                    if (config.Method == Method.GET)
+                        manage2 = GETData(config, cap.UseCookies ? manage : null, Proxy);
+                    else if (config.Method == Method.POST)
                     {
-                        if (config.Method == Method.GET)
-                            manage2 = GETData(config, manage, Proxy);
-                        else if (config.Method == Method.POST)
-                        {
-                            manage2 = POSTData(config, manage, Proxy);
-                        }
-                    }
-                    else
-                    {
-                        if (config.Method == Method.GET)
-                            manage2 = GETData(config, null, Proxy);
-                        else if (config.Method == Method.POST)
-                        {
-                            manage2 = POSTData(config, null, Proxy);
-                        }
+                        manage2 = POSTData(config, cap.UseCookies ? manage : null, Proxy);
                     }
                 }
                 if (cap.RemoveLines)
