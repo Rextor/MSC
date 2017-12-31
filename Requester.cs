@@ -179,10 +179,8 @@ namespace MSC.Brute
             Match match = Regex.Match(get.SourcePage, RegexP);
             logger.AddMessage("Found " + match.Groups.Count.ToString() + " Groups in Regexing.", Log.Type.Infomation);
 
-            RequestManage end = new RequestManage();
+            RequestManage end = get;
             end.SourcePage = match.Groups[1].ToString();
-            end.Cookies = get.Cookies;
-            end.Headers = get.Headers;
             logger.AddMessage("RequestManage OutPut\nSoucePage:\n" + end.SourcePage + "\n\nCookies:\n" + Utils.GetCookiesString(end.Cookies, config) + "\n\nHeaders:\n" + end.Headers.ToString(), Log.Type.OutPut);
 
             return end;
