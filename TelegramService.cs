@@ -37,7 +37,6 @@ namespace MSC
             ac.Password = Token;
 
             text = EncodeText(text);
-            config.Method = Method.POST;
             string pst = "https://api.telegram.org/bot<TOKEN>/sendMessage?chat_id=<ID>&text=<TEXT>";
             config.DataSet = "<ID>*<TOKEN>";
             pst = Rer.ReplaceAccount(ac, pst, config);
