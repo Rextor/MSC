@@ -12,8 +12,8 @@ namespace MSC
             string[] All = Item.Split(Sp);
             return All;
         }
-        private List<String> Combolist { set; get; }
-        private List<String> Proxylist { set; get; }
+        public List<String> Combolist { set; get; }
+        public List<String> Proxylist { set; get; }
         public Proxy Proxy { set; get; }
         public int ChangeOfProxy { set; get; }
         public int OfProxy { set; get; }
