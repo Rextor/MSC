@@ -1,13 +1,13 @@
 # MSC API For multi site cracker
 - The refrence for Request and Response from web...
 - Make your crackers by it to easy
--                                                          [Ju$t majD]
+-                                                          [Ju$t MiLLie]
 # Config
 - you can set your setting on config for request
 - Config config = new Config();
 - config.LoginURL= "www.google.com";
 - config.Cookies = "key=value; key2=value2";
-- config.AddHeader("Name","Value");
+- config.AddHeader("Name:Value");
 # Requester
 - Requester class just use for config to request and return a RequestManage
 - Requester Rer = new Requester();
