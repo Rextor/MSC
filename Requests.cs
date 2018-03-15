@@ -154,11 +154,12 @@ namespace MSC.Brute
                 if (mange.CookiesString != null)
                     config.Cookies += mange.CookiesString;
             RequestManage end = new RequestManage();
+            CookieContainer container = new CookieContainer();
             try
             {
                 ServicePointManager.ServerCertificateValidationCallback +=
         new RemoteCertificateValidationCallback((sender, certificate, chain, policyErrors) => { return true; });
-                CookieContainer container = new CookieContainer();
+
 
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(config.LoginURL);
 
@@ -221,10 +222,12 @@ namespace MSC.Brute
             {
                 string error = ex.Message;
 
-                end.StatusCode = (int)((HttpWebResponse)ex.Response).StatusCode;
-
+                if (ex.Response != null)
+                {
+                    end = Utils.GetManage(ex.Response, container);
+                    end.StatusCode = (int)((HttpWebResponse)ex.Response).StatusCode;
+                }
                 end.ErrorAst = true;
-                end.SourcePage = "ERROR|" + error + "|" + ex.Message;
                 logger.AddMessage("RequestManage OutPut\nSoucePage:\n" + end.SourcePage + "\n\nCode: " + end.StatusCode.ToString(), Log.Type.OutPut);
 
                 return end;
@@ -243,10 +246,13 @@ namespace MSC.Brute
                 if (mange.CookiesString != null)
                     config.Cookies += mange.CookiesString;
             RequestManage end = new RequestManage();
+            CookieContainer container = new CookieContainer();
             try
             {
                 //SetConfig
-                CookieContainer container = new CookieContainer();
+                ServicePointManager.ServerCertificateValidationCallback +=
+new RemoteCertificateValidationCallback((sender, certificate, chain, policyErrors) => { return true; });
+
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(config.LoginURL);
 
                 if (ProxyService.proxy.Ip != null | Proxy != null)
@@ -319,12 +325,12 @@ namespace MSC.Brute
             }
             catch (WebException ex)
             {
-                string error = ex.Message;
-
-                end.StatusCode = (int)((HttpWebResponse)ex.Response).StatusCode;
-
+                if (ex.Response != null)
+                {
+                    end = Utils.GetManage(ex.Response, container);
+                    end.StatusCode = (int)((HttpWebResponse)ex.Response).StatusCode;
+                }
                 end.ErrorAst = true;
-                end.SourcePage = "ERROR|" + error + "|" + ex.Message;
                 logger.AddMessage("RequestManage OutPut\nSoucePage:\n" + end.SourcePage + "\n\nCode: " + end.StatusCode.ToString(), Log.Type.OutPut);
 
                 return end;
