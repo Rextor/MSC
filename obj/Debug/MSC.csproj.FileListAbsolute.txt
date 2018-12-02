@@ -1,0 +1,6 @@
+C:\Users\n-nav\Documents\GitHub\MSC\bin\Debug\MSC.dll
+C:\Users\n-nav\Documents\GitHub\MSC\bin\Debug\MSC.pdb
+C:\Users\n-nav\Documents\GitHub\MSC\obj\Debug\MSC.csprojResolveAssemblyReference.cache
+C:\Users\n-nav\Documents\GitHub\MSC\obj\Debug\MSC.csproj.CoreCompileInputs.cache
+C:\Users\n-nav\Documents\GitHub\MSC\obj\Debug\MSC.dll
+C:\Users\n-nav\Documents\GitHub\MSC\obj\Debug\MSC.pdb

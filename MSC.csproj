@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="Hashs.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="OCR.cs" />
     <Compile Include="ProxyService.cs" />
     <Compile Include="Requests.cs" />
     <Compile Include="Config.cs" />
