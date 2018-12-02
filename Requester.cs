@@ -18,7 +18,6 @@ namespace MSC.Brute
         public string Location { get; set; }
         public string RedirectedUrl { set; get; }
         public byte[] Bytes { set; get; }
-        public Image Image { set; get; }
         public override string ToString()
         {
             return string.Format("Headers: {0}\nStatusCode: {1}\nCookies: {2}\nErrorAst: {3}\nLocation: {4}\nRedirectedUrl: {5}", Headers.ToString(), StatusCode.ToString(), CookiesString, ErrorAst.ToString(), Location, RedirectedUrl);

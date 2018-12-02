@@ -99,49 +99,6 @@ namespace MSC.Brute
         }
 
 
-        internal RequestManage GetBytesRequest(Config config, Proxy proxy = null, bool GetImage = false)
-        {
-            WebClient wc = new WebClient();
-            RequestManage Rm = new RequestManage();
-
-            if (ProxyService.proxy.Ip != null | proxy != null)
-            {
-                string setProxy = SetProxy(proxy, wc, out wc);
-                if (setProxy != "OK")
-                {
-                    Rm.Cookies = null;
-                    Rm.Headers = null;
-                    Rm.SourcePage = "ERROR|PROXY|" + setProxy;
-                    logger.AddMessage("RequestManage OutPut\nSoucePage:\n" + Rm.SourcePage + "\n\nCookies:\n" + Utils.GetCookiesString(Rm.Cookies, config) + "\n\nHeaders:\n" + Rm.Headers.ToString(), Log.Type.OutPut);
-                    return Rm;
-                }
-            }
-            else wc.Proxy = null;
-
-            wc.Headers["Cookies"] = config.Cookies;
-            wc.Headers["UserAgent"] = config.UserAgent;
-            wc.Headers["KeepAlive"] = config.KeepAlive.ToString();
-            wc.Headers["ContentType"] = config.ContectType;
-            wc.Headers["Referer"] = config.Referer;
-
-            byte[] Res = wc.DownloadData(config.LoginURL);
-            if (GetImage)
-            {
-                try
-                {
-                    Image x = (Bitmap)((new ImageConverter()).ConvertFrom(Res));
-                    Rm.Image = x;
-                }
-                catch { }
-            }
-
-            Rm.Bytes = Res;
-            Rm.CookiesString = wc.Headers["Cookies"];
-            Rm.Headers = wc.Headers;
-
-            return Rm;
-        }
-
         /// <summary>
 		/// GETData base request
 		/// </summary>

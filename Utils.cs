@@ -26,16 +26,20 @@ namespace MSC
             RequestManage NewManage = new RequestManage();
             NewManage.Cookies = Cc;
             NewManage.Headers = Wr.Headers;
-            NewManage.SourcePage = new System.IO.StreamReader(Wr.GetResponseStream()).ReadToEnd();
+            Stream stream = Wr.GetResponseStream();
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = stream.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                NewManage.Bytes = ms.ToArray();
+            }
+            NewManage.SourcePage = Encoding.UTF8.GetString(NewManage.Bytes);
             NewManage.Location = Wr.Headers["Location"];
             NewManage.RedirectedUrl = Wr.ResponseUri.AbsoluteUri;
-            //if (Wr.Headers["Content-Type"].Contains("image/"))
-            //{
-            //    Stream httpResponseStream = Wr.GetResponseStream();
-
-            //    NewManage.Image = Image.FromStream(httpResponseStream);
-            //}
-
             return NewManage;
         }
         public static string GetCookiesString(CookieContainer cookies, Config config)
