@@ -244,11 +244,6 @@ namespace MSC.Brute
             return Get;
         }
 
-        public RequestManage GETBytes(Config config, Proxy proxy = null, bool GetImage = false)
-        {
-            return Rs.GetBytesRequest(config, proxy, GetImage);
-        }
-
         /// <summary>
 		/// Normal GETData
 		/// </summary>
