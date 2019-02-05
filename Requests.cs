@@ -150,7 +150,12 @@ namespace MSC.Brute
                 //Add Headres
                 if (config.Headers != null)
                 {
-                    httpWebRequest.Headers = Utils.SetHeaders(config);
+                    string[] All = config.Headers.Split('|');
+                    foreach (string Item in All)
+                    {
+                        if (Item != "")
+                            httpWebRequest.Headers.Add(Item);
+                    }
                 }
 
                 //Add Cookies
@@ -240,7 +245,12 @@ new RemoteCertificateValidationCallback((sender, certificate, chain, policyError
                 //Add Headers
                 if (config.Headers != null)
                 {
-                    httpWebRequest.Headers = Utils.SetHeaders(config);
+                    string[] All = config.Headers.Split('|');
+                    foreach (string Item in All)
+                    {
+                        if (Item != "")
+                            httpWebRequest.Headers.Add(Item);
+                    }
                 }
 
                 //Add Cookies
